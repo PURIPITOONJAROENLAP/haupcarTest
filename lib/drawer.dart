@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/categories.dart';
 
@@ -18,11 +19,6 @@ class _drawerState extends State<drawer> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           builderHeader(context),
-      
-          // Container(
-          //   width: 16,
-          //   child: Text('language',style: TextStyle( fontSize: 20)),
-          // ),
           builderMenuItems(context),
         ],
       )),
@@ -42,39 +38,39 @@ class _drawerState extends State<drawer> {
             padding: EdgeInsets.all(16.0),
             child:
               Column(
-                children: const [
-                  ListTile( leading:Text('language',style: TextStyle(fontSize: 20,))),
-                  Divider(color: Colors.black),
+                children:  [
+                  ListTile( leading:const Text('language',style: TextStyle(fontSize: 20,)).tr()),
+                  const Divider(color: Colors.black),
                 ],
               )
           ),
           ListTile(
             leading: const Icon(Icons.language, color: Colors.amber),
-            title: const Text('ไทย'),
+            title: Text('th'.tr()),
             onTap: () => setState(() {
-              // if (context.locale.languageCode == 'en') {
-              //   context.setLocale(Locale('th'));
-              // } else {
-              //   context.setLocale(Locale('en'));
-              // }
-             
+                context.setLocale(Locale('th'));      
             }),
           ),
           ListTile(
             leading: const Icon(Icons.language, color: Colors.amber),
-            title: const Text('English'),
+            title: Text('eng'.tr()),
             onTap: () => setState(() {
-              // if (context.locale.languageCode == 'en') {
-              //   context.setLocale(Locale('th'));
-              // } else {
-              //   context.setLocale(Locale('en'));
-              // }
-             
+                context.setLocale(Locale('en'));         
             }),
+          ),
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child:
+              Column(
+                children:  [
+                  ListTile( leading:const Text('page',style: TextStyle(fontSize: 20,)).tr()),
+                  const Divider(color: Colors.black),
+                ],
+              )
           ),
           ListTile(
             leading: const Icon(Icons.language, color: Colors.amber),
-            title: const Text('Home'),
+            title: Text('home'.tr()),
             onTap: () => Navigator.push(context,MaterialPageRoute(builder: (context) => CategoriesScreen(),))
           )
         ],
