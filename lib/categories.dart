@@ -38,7 +38,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Center(child: Text("home".tr())),
+          title: Center(child: Text("home".tr(),style: TextStyle(color: Colors.black),)),
+          backgroundColor: Color.fromARGB(255, 176, 220, 220),
+          iconTheme: IconThemeData(color: Colors.black),
         ),
         drawer: drawer(),
         body: Column(children: [header(), categoriesList()]));
@@ -46,27 +48,39 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
 
   Widget categoriesList() {
     return Expanded(
-        child: ListView.builder(
-          itemCount: _categories.length,
-          itemBuilder: (context, index) {
+        child: Container(
+        color: Color.fromARGB(255, 201, 197, 197),
+          child: ListView.builder(
+            itemCount: _categories.length,
+            itemBuilder: (context, index) {
             final category = _categories[index];
-            return ListTile(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => productList(category: category),
-                  ),
-                );
-              },
-              title: Text(category),
-            );
-          },
-        ));
+            return Padding(
+              padding: EdgeInsets.all(10),
+                child: Container(
+                  color: Colors.white,
+                  child: ListTile(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => productList(category: category),
+                      ),
+                    );
+                  },
+                  title: Text(category),
+                  )
+                )
+              );
+            },
+          )
+        )
+      );
   }
 
   Widget header() {
-    return Padding(
+    return Container(
+      color: Color.fromARGB(255, 201, 197, 197),
+      child:Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
           children: [
@@ -77,6 +91,6 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                     )).tr()),
             const Divider(color: Colors.black),
           ],
-        ));
+        )));
   }
 }

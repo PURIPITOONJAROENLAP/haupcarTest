@@ -41,27 +41,36 @@ class _productListState extends State<productList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child:Text(category)),
+        title: Center(child:Text(category,style: TextStyle(color: Colors.black))),
+        backgroundColor: Color.fromARGB(255, 176, 220, 220),
+        iconTheme: IconThemeData(color: Colors.black),
       ),
       drawer: drawer(),
-      body: ListView.builder(
+      body: Container(
+        color: Color.fromARGB(255, 201, 197, 197),
+        child: ListView.builder(
         itemCount: _products.length,
         itemBuilder: (context, index) {
           final products = _products[index];
-          return Container(
-            height: 100,
-            child: ListTile(
-              leading: Image.network(products['images'][0],
-                  fit: BoxFit.cover,
-                  width:100 ,
-                  height: 50,
-                  ),
-              title: Text(products["title"]),
-              subtitle: Text(products["description"]),
+          return Padding(
+            padding: EdgeInsets.all(10),
+            child: Container(
+              color: Colors.white,
+              height: 110,
+              child:ListTile(
+                leading: Image.network(products['images'][0],
+                    fit: BoxFit.cover,
+                    width:100 ,
+                    height: 50,
+                    ),
+                title: Text(products["title"]),
+                subtitle: Text(products["description"]),
+              )
             )
           );
         },
       ),
+      )
     );
   }
 }

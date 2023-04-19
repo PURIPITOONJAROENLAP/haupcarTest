@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application/categories.dart';
+import 'package:flag/flag.dart';
 
 class drawer extends StatefulWidget {
   drawer({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _drawerState extends State<drawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      // backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 176, 220, 220),
       child: SingleChildScrollView(
           child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,14 +46,14 @@ class _drawerState extends State<drawer> {
               )
           ),
           ListTile(
-            leading: const Icon(Icons.language, color: Colors.amber),
+            leading:  Flag.fromCode(width:40,FlagsCode.TH),
             title: Text('th'.tr()),
             onTap: () => setState(() {
                 context.setLocale(Locale('th'));      
             }),
           ),
           ListTile(
-            leading: const Icon(Icons.language, color: Colors.amber),
+            leading:  Flag.fromCode(width:40,FlagsCode.GB),
             title: Text('eng'.tr()),
             onTap: () => setState(() {
                 context.setLocale(Locale('en'));         
